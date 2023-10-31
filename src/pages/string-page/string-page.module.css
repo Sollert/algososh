@@ -1,0 +1,13 @@
+.form-container {
+  max-width: 522px;
+  margin: 0 auto 120px;
+  display: flex;
+  gap: 12px;
+}
+
+.list-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 auto;
+}
