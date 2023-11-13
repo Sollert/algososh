@@ -58,7 +58,7 @@ export const FibonacciPage = () => {
 
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
-      <section className={styles['section']}>
+      <section>
         <form className={styles['form-container']} onSubmit={onSubmitHandler}>
           <Input type="number" min={1} max={19} value={inputValue} onChange={inputChangeHandler}/>
           <Button text={'Рассчитать'} type={"submit"} isLoader={isLoading}
