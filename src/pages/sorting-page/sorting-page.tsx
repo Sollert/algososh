@@ -104,12 +104,13 @@ export const SortingPage = () => {
             <Button
               text='По убыванию'
               sorting={Direction.Descending}
-              extraClass={`mr-40 ${styles.button}`}
+              extraClass={`mr-40 ${styles['button']}`}
               disabled={inProgress}
               isLoader={inProgress && !isAscending}
               onClick={() => handleSortClick(Direction.Descending)}
             />
             <Button
+              extraClass={styles['button']}
               type={'reset'}
               text='Новый массив'
               onClick={generateRandomArray}
