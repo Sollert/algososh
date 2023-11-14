@@ -7,18 +7,18 @@ import {Circle} from "../../components/ui/circle/circle";
 
 import {delay, swap} from "../../utils/utils";
 import {ElementStates} from "../../types/element-states";
-import {StringResult} from "../../types/string-types";
+import { DataElement } from "../../types/types";
 
 import styles from './string-page.module.css';
 
 export const StringPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [isResultMounted, setResultIsMounted] = useState(false);
-  const [resultArray, setResultArray] = useState<StringResult[]>([]);
+  const [resultArray, setResultArray] = useState<(DataElement | null)[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const inputChangeHandler = (evt: FormEvent) => {
-    const target = evt.target as HTMLButtonElement;
+    const target = evt.target as HTMLInputElement;
     if (target) {
       setInputValue(target.value)
     }
@@ -72,8 +72,8 @@ export const StringPage = () => {
                   disabled={isLoading || inputValueIsEmpty}/>
         </form>
         {isResultMounted && <div className={styles['list-container']}>
-          {resultArray.map((letter: {value: string, state: ElementStates}, index) => {
-            return <Circle letter={letter.value} key={index} state={letter.state}/>
+          {resultArray.map((letter, index) => {
+            return <Circle letter={letter?.value.toString()} key={index} state={letter?.state}/>
           })}
         </div>}
       </section>

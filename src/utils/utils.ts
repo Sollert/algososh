@@ -1,9 +1,9 @@
 import {SHORT_DELAY_IN_MS} from "../constants/delays";
-import {SortingElement} from "../types/sortingTypes";
 import {
   selectionSort,
   bubbleSort
 } from "./algorithms";
+import {DataElement} from "../types/types";
 
 export const swap = <T>(array: T[], firstIndex: number, secondIndex: number) => {
   const temp = array[firstIndex];
@@ -20,12 +20,12 @@ export const getRandomNumber = (min: number, max: number) => {
 }
 
 export const getSortSteps = (
-  arrToSort: (SortingElement | null)[],
+  arrToSort: (DataElement | null)[],
   isAscending: boolean,
   sortAlgorithm: string | null
 ) => {
   const arr = arrToSort;
-  const steps: (SortingElement | null)[][] = [];
+  const steps: (DataElement | null)[][] = [];
 
   if (sortAlgorithm === 'выбор') {
     selectionSort(arr, steps, isAscending)

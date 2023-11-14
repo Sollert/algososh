@@ -1,6 +1,7 @@
 import {ElementStates} from "./element-states";
 
-export type SortingElement = {
-  value: number;
+export type DataElement = {
+  value: string | number;
   state: ElementStates;
+  isHead?: boolean;
 }

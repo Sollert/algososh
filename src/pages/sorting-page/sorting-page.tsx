@@ -6,15 +6,15 @@ import {Button} from "../../components/ui/button/button";
 import {Column} from "../../components/ui/column/column";
 
 import {ElementStates} from "../../types/element-states";
-import {SortingElement} from "../../types/sortingTypes";
 import {Direction} from "../../types/direction";
 
 import {delay, getRandomNumber, getSortSteps,} from "../../utils/utils";
 
 import styles from './sorting-page.module.css';
+import {DataElement} from "../../types/types";
 
 export const SortingPage = () => {
-  const [array, setArray] = useState<(SortingElement | null)[]>([])
+  const [array, setArray] = useState<(DataElement | null)[]>([])
   const [isAscending, setIsAscending] = useState(false);
   const [inProgress, setInProgress] = useState(false);
   const [sortAlgorithm, setSortAlgorithm] = useState<string>(
@@ -42,7 +42,7 @@ export const SortingPage = () => {
 
   const showSort = async (isAscending: boolean) => {
     const steps = getSortSteps(
-      array ? [...array] : [],
+      [...array],
       isAscending,
       sortAlgorithm
     );

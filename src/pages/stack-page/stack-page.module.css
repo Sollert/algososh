@@ -1,0 +1,16 @@
+.form-container {
+  display: flex;
+  margin: 0 auto 52px;
+  max-width: 870px;
+  gap: 12px;
+}
+
+.stack-container {
+  display: flex;
+  max-width: 870px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 16px;
+  row-gap: 60px;
+}
