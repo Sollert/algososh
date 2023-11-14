@@ -5,6 +5,7 @@ import {Input} from "../../components/ui/input/input";
 import {Button} from "../../components/ui/button/button";
 import {Circle} from "../../components/ui/circle/circle";
 
+import {FIBONACCI_MAX_INDEX} from "../../constants/numbers";
 import {delay} from "../../utils/utils";
 
 import styles from './fibonacci-page.module.css';
@@ -60,7 +61,7 @@ export const FibonacciPage = () => {
     <SolutionLayout title="Последовательность Фибоначчи">
       <section>
         <form className={styles['form-container']} onSubmit={onSubmitHandler}>
-          <Input type="number" min={1} max={19} value={inputValue} onChange={inputChangeHandler}/>
+          <Input type="number" min={1} max={FIBONACCI_MAX_INDEX} value={inputValue} onChange={inputChangeHandler}/>
           <Button text={'Рассчитать'} type={"submit"} isLoader={isLoading}
                   disabled={isLoading || inputValueIsEmpty}/>
         </form>

@@ -3,13 +3,16 @@ import {FormEvent, useState} from "react";
 import {SolutionLayout} from "../../components/ui/solution-layout/solution-layout";
 import {Input} from "../../components/ui/input/input";
 import {Button} from "../../components/ui/button/button";
+import {Circle} from "../../components/ui/circle/circle";
 
-import styles from './stack-page.module.css'
+import {STACK_INPUT_MAX_LENGTH} from "../../constants/numbers";
 import {stack} from "./stack";
+import {delay} from "../../utils/utils";
+
 import {DataElement} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
-import {delay} from "../../utils/utils";
-import {Circle} from "../../components/ui/circle/circle";
+
+import styles from './stack-page.module.css'
 
 export const StackPage = () => {
   const [inputValue, setInputValue] = useState('')
@@ -82,7 +85,7 @@ export const StackPage = () => {
       <div className={styles['form-container']}>
         <Input
           value={inputValue}
-          maxLength={4}
+          maxLength={STACK_INPUT_MAX_LENGTH}
           isLimitText={true}
           onChange={inputChangeHandler}
           disabled={inProgress}

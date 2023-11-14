@@ -7,11 +7,16 @@ import {Column} from "../../components/ui/column/column";
 
 import {ElementStates} from "../../types/element-states";
 import {Direction} from "../../types/direction";
+import {DataElement} from "../../types/types";
 
 import {delay, getRandomNumber, getSortSteps,} from "../../utils/utils";
+import {
+  SORTING_ARRAY_MAX_LENGTH, SORTING_ARRAY_MAX_VALUE,
+  SORTING_ARRAY_MIN_LENGTH,
+  SORTING_ARRAY_MIN_VALUE
+} from "../../constants/numbers";
 
 import styles from './sorting-page.module.css';
-import {DataElement} from "../../types/types";
 
 export const SortingPage = () => {
   const [array, setArray] = useState<(DataElement | null)[]>([])
@@ -28,13 +33,9 @@ export const SortingPage = () => {
 
 
   const generateRandomArray = () => {
-    const minLength = 3;
-    const maxLength = 17;
-    const minValue = 0;
-    const maxValue = 100;
-    const arrayLength = getRandomNumber(minLength, maxLength);
+    const arrayLength = getRandomNumber(SORTING_ARRAY_MIN_LENGTH, SORTING_ARRAY_MAX_LENGTH);
     const randomArray = Array.from({length: arrayLength}, () => ({
-      value: getRandomNumber(minValue, maxValue),
+      value: getRandomNumber(SORTING_ARRAY_MIN_VALUE, SORTING_ARRAY_MAX_VALUE),
       state: ElementStates.Default,
     }));
     setArray([...randomArray]);

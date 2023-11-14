@@ -5,6 +5,8 @@ import {Input} from "../../components/ui/input/input";
 import {Button} from "../../components/ui/button/button";
 import {Circle} from "../../components/ui/circle/circle";
 
+import {STRING_INPUT_MAX_LENGTH} from "../../constants/numbers";
+
 import {delay, swap} from "../../utils/utils";
 import {ElementStates} from "../../types/element-states";
 import { DataElement } from "../../types/types";
@@ -67,7 +69,7 @@ export const StringPage = () => {
     <SolutionLayout title="Строка">
       <section className={styles['section']}>
         <form className={styles['form-container']} onSubmit={onSubmitHandler}>
-          <Input maxLength={11} isLimitText value={inputValue} onChange={inputChangeHandler}/>
+          <Input maxLength={STRING_INPUT_MAX_LENGTH} isLimitText value={inputValue} onChange={inputChangeHandler}/>
           <Button text={'Развернуть'} type={"submit"} isLoader={isLoading}
                   disabled={isLoading || inputValueIsEmpty}/>
         </form>
