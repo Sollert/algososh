@@ -5,4 +5,7 @@ export type DataElement = {
   state: ElementStates;
   isHead?: boolean;
   isTail?: boolean;
+  isLinked?: boolean;
+  changingPosition?: boolean;
+  newValue?: string | number;
 }

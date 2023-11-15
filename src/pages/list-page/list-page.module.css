@@ -1,0 +1,61 @@
+.form-container {
+  display: flex;
+  gap: 12px;
+  max-width: 952px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 38px;
+  max-width: 362px;
+}
+
+.button {
+  max-width: 175px;
+  width: 100%;
+  box-sizing: border-box;
+  text-wrap: nowrap;
+}
+
+.button:last-of-type {
+  max-width: 100%;
+}
+
+.list {
+  margin-top: 120px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.list-element {
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-circle {
+  position: absolute;
+  top: -64px;
+  left: 24px;
+}
+
+.delete-circle {
+  position: absolute;
+  top: 120px;
+  left: 24px;
+}

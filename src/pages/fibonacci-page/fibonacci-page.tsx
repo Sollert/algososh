@@ -17,7 +17,7 @@ export const FibonacciPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const inputChangeHandler = (evt: FormEvent) => {
-    const target = evt.target as HTMLButtonElement;
+    const target = evt.target as HTMLInputElement;
     if (target) {
       setInputValue(target.value)
     }
