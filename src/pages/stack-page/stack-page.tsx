@@ -18,6 +18,8 @@ export const StackPage = () => {
   const [inputValue, setInputValue] = useState('')
   const [inProgress, setInProgress] = useState(false);
   const [array, setArray] = useState<(DataElement | null)[]>([])
+  const [isAdding, setIsAdding] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const inputChangeHandler = (evt: FormEvent) => {
     const target = evt.target as HTMLInputElement;
@@ -28,6 +30,7 @@ export const StackPage = () => {
 
   const handleAddClick = async () => {
     setInProgress(true);
+    setIsAdding(true);
 
     let lastElement = stack.peek();
     if (!stack.isEmpty() && lastElement) {
@@ -50,11 +53,13 @@ export const StackPage = () => {
     }
 
     setInProgress(false);
+    setIsAdding(false);
     setInputValue('');
   };
 
   const handleRemoveClick = async () => {
     setInProgress(true);
+    setIsDeleting(true)
 
     let lastElement = stack.peek()
     if (!stack.isEmpty() && lastElement) {
@@ -72,6 +77,7 @@ export const StackPage = () => {
     setArray([...stack.getElements()]);
 
     setInProgress(false);
+    setIsDeleting(false)
     setInputValue('');
   }
 
@@ -94,22 +100,21 @@ export const StackPage = () => {
           text='Добавить'
           type={'submit'}
           onClick={handleAddClick}
-          disabled={inProgress || !inputValue}
-          isLoader={inProgress}
+          disabled={isDeleting || !inputValue}
+          isLoader={isAdding}
         />
         <Button
           text='Удалить'
           extraClass={'mr-40'}
-          disabled={inProgress || stack.getSize() === 0}
-          isLoader={inProgress}
+          disabled={isAdding || stack.getSize() === 0}
+          isLoader={isDeleting}
           onClick={handleRemoveClick}
         />
         <Button
           text='Очистить'
           type={'reset'}
           onClick={handleResetClick}
-          disabled={inProgress || stack.getSize() === 0}
-          isLoader={inProgress}
+          disabled={isDeleting || isAdding || stack.getSize() === 0}
         />
       </div>
       <div className={styles['stack-container']}>

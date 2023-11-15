@@ -291,7 +291,13 @@ export const ListPage = () => {
             data='add-at-head-button'
             onClick={addToHead}
             isLoader={isAddingHead}
-            disabled={(inProgress && !isAddingHead) || inputValue.length === 0}
+            disabled={(inProgress && !isAddingHead)
+              || inputValue.length === 0
+              || isDeletingHead
+              || isAddingTail
+              || isDeletingAtIndex
+              || isDeletingTail
+              || isAddingAtIndex}
             extraClass={styles['button']}
           />
           <Button
@@ -300,7 +306,13 @@ export const ListPage = () => {
             data='add-at-tail-button'
             onClick={addToTail}
             isLoader={isAddingTail}
-            disabled={(inProgress && !isAddingTail) || inputValue.length === 0}
+            disabled={(inProgress && !isAddingTail)
+              || inputValue.length === 0
+              || isAddingHead
+              || isDeletingHead
+              || isDeletingAtIndex
+              || isDeletingTail
+              || isAddingAtIndex}
             extraClass={styles['button']}
           />
           <Button
@@ -311,9 +323,14 @@ export const ListPage = () => {
             onClick={addIndex}
             isLoader={isAddingAtIndex}
             disabled={
-              inputIndex < 0 ||
-              inputIndex >= list.getSize() ||
-              inputValue.length === 0
+              inputIndex < 0
+              || inputIndex >= list.getSize()
+              || inputValue.length === 0
+              || isAddingHead
+              || isAddingTail
+              || isDeletingAtIndex
+              || isDeletingTail
+              || isDeletingHead
             }
           />
         </div>
@@ -324,7 +341,13 @@ export const ListPage = () => {
             data='delete-at-head-button'
             onClick={deleteHead}
             isLoader={isDeletingHead}
-            disabled={list.isEmpty() || list.getSize() < 2}
+            disabled={list.isEmpty()
+              || list.getSize() < 2
+              || isAddingHead
+              || isAddingTail
+              || isDeletingAtIndex
+              || isDeletingTail
+              || isAddingAtIndex}
             extraClass={styles['button']}
           />
           <Button
@@ -333,7 +356,14 @@ export const ListPage = () => {
             data='delete-at-tail-button'
             onClick={deleteTail}
             isLoader={isDeletingTail}
-            disabled={list.isEmpty() || list.getSize() < 2}
+            disabled={
+              list.isEmpty()
+              || list.getSize() < 2
+              || isAddingHead
+              || isAddingTail
+              || isDeletingHead
+              || isDeletingAtIndex
+              || isAddingAtIndex}
             extraClass={styles['button']}
           />
           <Button
@@ -344,7 +374,14 @@ export const ListPage = () => {
             onClick={deleteIndex}
             isLoader={isDeletingAtIndex}
             disabled={
-              inputIndex < 0 || list.isEmpty() || inputIndex >= list.getSize()
+              inputIndex < 0
+              || list.isEmpty()
+              || inputIndex >= list.getSize()
+              || isAddingHead
+              || isAddingTail
+              || isDeletingHead
+              || isDeletingTail
+              || isAddingAtIndex
             }
           />
         </div>

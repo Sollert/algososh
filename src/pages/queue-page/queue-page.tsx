@@ -25,6 +25,8 @@ export const QueuePage = () => {
     state: ElementStates.Default,
   }));
   const [array, setArray] = useState<(DataElement | null)[]>(initialQueueElements)
+  const [isAdding, setIsAdding] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const inputChangeHandler = (evt: FormEvent) => {
     const target = evt.target as HTMLInputElement;
@@ -35,6 +37,7 @@ export const QueuePage = () => {
 
   const handleAddClick = async () => {
     setInProgress(true);
+    setIsAdding(true);
 
     let tail = queue.getTailElement();
     queue.enqueue({value: '', state: ElementStates.Changing})
@@ -54,10 +57,12 @@ export const QueuePage = () => {
     setArray([...queue.getElements()])
     setInputValue('')
     setInProgress(false)
+    setIsAdding(false);
   }
 
   const handleRemoveClick = async () => {
     setInProgress(true);
+    setIsDeleting(true);
 
     let tail = queue.getTailElement();
     let head = queue.getHeadElement();
@@ -79,9 +84,10 @@ export const QueuePage = () => {
       head.value.isHead = true;
     }
 
-    setArray([...queue.getElements()])
-    setInputValue('')
-    setInProgress(false)
+    setArray([...queue.getElements()]);
+    setInputValue('');
+    setInProgress(false);
+    setIsDeleting(false);
   }
 
   const handleResetClick = async () => {
@@ -108,22 +114,22 @@ export const QueuePage = () => {
         <Button
           text='Добавить'
           type={'submit'}
-          disabled={inProgress || !inputValue || queue.getTailElement()?.index === QUEUE_MAX_LENGTH - 1}
-          isLoader={inProgress}
+          disabled={isDeleting || !inputValue || queue.getTailElement()?.index === QUEUE_MAX_LENGTH - 1}
+          isLoader={isAdding}
           onClick={handleAddClick}
         />
         <Button
           text='Удалить'
           extraClass={'mr-40'}
-          disabled={inProgress || queue.getSize() === 0}
-          isLoader={inProgress}
+          disabled={isAdding || queue.getSize() === 0}
+          isLoader={isDeleting}
           onClick={handleRemoveClick}
         />
         <Button
           text='Очистить'
           type={'reset'}
-          disabled={inProgress || queue.getSize() === 0}
-          isLoader={inProgress}
+          disabled={isAdding || isDeleting || queue.getSize() === 0}
+          isLoader={inProgress && !isAdding && !isDeleting}
           onClick={handleResetClick}
         />
       </form>
