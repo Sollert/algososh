@@ -13,7 +13,6 @@ interface ILinkedList<T> {
   getSize: () => number;
 }
 
-// класс, реализующий интерфейс
 export class LinkedList<T> implements ILinkedList<T> {
   private head: Node<T> | null;
   private size: number;

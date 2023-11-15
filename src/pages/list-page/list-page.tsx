@@ -8,15 +8,15 @@ import {ArrowIcon} from '../../components/ui/icons/arrow-icon';
 
 import {delay} from '../../utils/utils';
 
+import {LIST_INPUT_MAX_LENGTH} from "../../constants/numbers";
+import {HEAD, TAIL} from "../../constants/element-captions";
+
 import {DataElement} from "../../types/types";
 import {ElementStates} from "../../types/element-states";
 
 import {LinkedList} from "./list";
 import styles from './list-page.module.css';
-import {LIST_INPUT_MAX_LENGTH} from "../../constants/numbers";
-import {HEAD, TAIL} from "../../constants/element-captions";
 
-// определение функционального компонента
 export const ListPage = () => {
   const initialListElements = useMemo(() => ['0', '34', '8', '1'], []);
   const list = useMemo(
