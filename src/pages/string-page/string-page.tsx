@@ -1,4 +1,4 @@
-import {FormEvent, useMemo, useState} from "react";
+import {FormEvent, useCallback, useMemo, useState} from "react";
 
 import {SolutionLayout} from "../../components/ui/solution-layout/solution-layout";
 import {Input} from "../../components/ui/input/input";
@@ -7,16 +7,17 @@ import {Circle} from "../../components/ui/circle/circle";
 
 import {STRING_INPUT_MAX_LENGTH} from "../../constants/numbers";
 
-import {delay, swap} from "../../utils/utils";
-import {ElementStates} from "../../types/element-states";
-import { DataElement } from "../../types/types";
+import {getReversingStringSteps, delay, getLetterState} from "../../utils/utils";
 
 import styles from './string-page.module.css';
 
 export const StringPage = () => {
   const [inputValue, setInputValue] = useState('');
   const [isResultMounted, setResultIsMounted] = useState(false);
-  const [resultArray, setResultArray] = useState<(DataElement | null)[]>([]);
+  const [resultArray, setResultArray] = useState<({
+    arr: string[];
+    step: number;
+  } | null)>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const inputChangeHandler = (evt: FormEvent) => {
@@ -30,52 +31,41 @@ export const StringPage = () => {
     return inputValue === ''
   }, [inputValue])
 
-  const onSubmitHandler = async (evt: FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = useCallback(async (evt) => {
     evt.preventDefault();
-    setResultIsMounted(true);
-    setInputValue('');
+
+    setResultIsMounted(true)
     setIsLoading(true);
 
-    const newArray = inputValue.split('').map(item => {
-      return {
-        value: item,
-        state: ElementStates.Default
-      }
-    });
+    const array = getReversingStringSteps(inputValue);
+    if (!array) return;
 
-    let start = 0;
-    let end = newArray.length - 1;
+    let step = 0;
+    setResultArray({arr: array[step], step: 0});
 
-    while (start <= end) {
-      newArray[start].state = ElementStates.Changing;
-      newArray[end].state = ElementStates.Changing;
-      setResultArray([...newArray]);
-
-      swap(newArray, start, end);
-
+    while (step < array.length) {
       await delay();
-      setResultArray([...newArray]);
-      newArray[start].state = ElementStates.Modified;
-      newArray[end].state = ElementStates.Modified;
-
-      start++
-      end--
+      setResultArray({arr: array[step], step});
+      step++;
     }
 
     setIsLoading(false);
-  }
+    setInputValue('');
+  }, [inputValue]);
 
   return (
     <SolutionLayout title="Строка">
       <section className={styles['section']}>
         <form className={styles['form-container']} onSubmit={onSubmitHandler}>
-          <Input maxLength={STRING_INPUT_MAX_LENGTH} isLimitText value={inputValue} onChange={inputChangeHandler}/>
+          <Input maxLength={STRING_INPUT_MAX_LENGTH} isLimitText value={inputValue}
+                 onChange={inputChangeHandler} disabled={isLoading}/>
           <Button text={'Развернуть'} type={"submit"} isLoader={isLoading}
                   disabled={isLoading || inputValueIsEmpty}/>
         </form>
         {isResultMounted && <div className={styles['list-container']}>
-          {resultArray.map((letter, index) => {
-            return <Circle letter={letter?.value.toString()} key={index} state={letter?.state}/>
+          {resultArray?.arr.map((letter, index) => {
+            return <Circle letter={letter} key={index}
+                           state={getLetterState(index, resultArray.step, resultArray.arr.length)}/>
           })}
         </div>}
       </section>

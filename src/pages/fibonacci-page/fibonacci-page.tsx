@@ -6,7 +6,7 @@ import {Button} from "../../components/ui/button/button";
 import {Circle} from "../../components/ui/circle/circle";
 
 import {FIBONACCI_MAX_INDEX} from "../../constants/numbers";
-import {delay} from "../../utils/utils";
+import {delay, getFibonacciSteps} from "../../utils/utils";
 
 import styles from './fibonacci-page.module.css';
 
@@ -28,21 +28,13 @@ export const FibonacciPage = () => {
   }, [inputValue])
 
   const getFibonacci = async (num: number) => {
-    let a = 1;
-    let b = 0;
-    let temp;
-    const tempSequence = [];
+    const fibonacciSteps = getFibonacciSteps(num);
+    let step = 0;
 
-    while (num >= 0) {
-      temp = a;
-      a += b;
-      b = temp;
-      tempSequence.push(b);
-
+    while (step < fibonacciSteps.length) {
       await delay();
-      setResultArray([...tempSequence]);
-
-      num -= 1;
+      setResultArray([...fibonacciSteps[step]])
+      step++
     }
   };
 

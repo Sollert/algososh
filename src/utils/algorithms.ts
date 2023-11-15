@@ -2,7 +2,6 @@ import {ElementStates} from "../types/element-states";
 import {swap} from "./utils";
 import {DataElement} from "../types/types";
 
-
 // Сортировка выбором
 export const selectionSort = (
   arr: (DataElement | null)[],
