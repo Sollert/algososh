@@ -1,0 +1,40 @@
+.form-container {
+  max-width: 980px;
+  margin: 0 auto 48px;
+  display: flex;
+  gap: 52px;
+  align-items: center;
+}
+
+.radio-inputs {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.buttons {
+  width: 100%;
+  max-width: 730px;
+  display: flex;
+  justify-content: start;
+}
+
+.button {
+  min-width: 210px;
+  width: 100%;
+}
+
+.bars {
+  margin: 0 auto;
+  padding: 0;
+  width: 940px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  column-gap: 16px;
+  row-gap: 48px;
+  list-style-type: none;
+}

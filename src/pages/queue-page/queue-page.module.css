@@ -1,0 +1,14 @@
+.form-container {
+  display: flex;
+  margin: 0 auto 52px;
+  max-width: 870px;
+  gap: 12px;
+}
+
+.queue-container {
+  display: flex;
+  max-width: 870px;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 16px;
+}
