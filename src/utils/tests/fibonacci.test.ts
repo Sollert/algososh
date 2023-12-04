@@ -1,4 +1,4 @@
-import {getFibonacciSteps, getReversingStringSteps} from "../utils";
+import {getFibonacciSteps } from "../utils";
 
 describe('Тест алгоритма генерации чисел Фибоначчи', () => {
   it('Тест с положительным числом', () => {
