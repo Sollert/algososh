@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { FibonacciPage } from "../../pages/fibonacci-page/fibonacci-page";
 import { ListPage } from "../../pages/list-page/list-page";
 import { MainPage } from "../../pages/main-page/main-page";
