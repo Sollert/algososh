@@ -13,7 +13,6 @@ import "./app.css";
 function App() {
   return (
     <div className="app">
-      <BrowserRouter>
         <Switch>
           <Route path="/" exact>
             <MainPage />
@@ -37,7 +36,6 @@ function App() {
             <ListPage />
           </Route>
         </Switch>
-      </BrowserRouter>
     </div>
   );
 }

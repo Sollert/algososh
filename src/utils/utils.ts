@@ -25,6 +25,7 @@ export const getSortSteps = (
   isAscending: boolean,
   sortAlgorithm: string | null
 ) => {
+
   const arr = arrToSort;
   const steps: (DataElement | null)[][] = [];
 
@@ -35,6 +36,8 @@ export const getSortSteps = (
   if (sortAlgorithm === 'пузырёк') {
     bubbleSort(arr, steps, isAscending)
   }
+
+  console.log(steps)
 
   return steps
 }
