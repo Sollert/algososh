@@ -8,6 +8,7 @@ describe('Тест компонента Button', () => {
       <Button text={'Развернуть'}/>
     );
     const tree = component.toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -16,6 +17,7 @@ describe('Тест компонента Button', () => {
       <Button/>
     );
     const tree = component.toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -24,6 +26,7 @@ describe('Тест компонента Button', () => {
       <Button disabled={true}/>
     );
     const tree = component.toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -32,13 +35,17 @@ describe('Тест компонента Button', () => {
       <Button isLoader={true}/>
     );
     const tree = component.toJSON();
+
     expect(tree).toMatchSnapshot();
   });
+
   it('Нажатие на кнопку вызывает корректный callback', () => {
    const onClickCallback = jest.fn();
    render(<Button onClick={onClickCallback} text={'Развернуть'}/>);
    const button = screen.getByText('Развернуть');
+
    fireEvent.click(button);
+
    expect(onClickCallback).toHaveBeenCalledTimes(1);
   })
 })

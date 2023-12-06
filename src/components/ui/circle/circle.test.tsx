@@ -82,6 +82,7 @@ describe('Тест компонента Circle', () => {
       <Circle state={ElementStates.Changing} />
     )
     const tree = component.toJSON();
+
     expect(tree).toMatchSnapshot();
   })
 
@@ -90,6 +91,7 @@ describe('Тест компонента Circle', () => {
       <Circle state={ElementStates.Modified} />
     )
     const tree = component.toJSON();
+
     expect(tree).toMatchSnapshot();
   })
 })
