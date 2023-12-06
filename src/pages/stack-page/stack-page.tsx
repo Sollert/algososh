@@ -95,6 +95,7 @@ export const StackPage = () => {
           isLimitText={true}
           onChange={inputChangeHandler}
           disabled={inProgress}
+          data-cy="input-value"
         />
         <Button
           text='Добавить'
@@ -105,6 +106,8 @@ export const StackPage = () => {
         />
         <Button
           text='Удалить'
+          type={"button"}
+          data-cy={"delete-button"}
           extraClass={'mr-40'}
           disabled={isAdding || stack.getSize() === 0}
           isLoader={isDeleting}
