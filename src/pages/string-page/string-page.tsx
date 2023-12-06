@@ -58,7 +58,7 @@ export const StringPage = () => {
       <section className={styles['section']}>
         <form className={styles['form-container']} onSubmit={onSubmitHandler}>
           <Input maxLength={STRING_INPUT_MAX_LENGTH} isLimitText value={inputValue}
-                 onChange={inputChangeHandler} disabled={isLoading}/>
+                 onChange={inputChangeHandler} disabled={isLoading} data-cy="input-value"/>
           <Button text={'Развернуть'} type={"submit"} isLoader={isLoading}
                   disabled={isLoading || inputValueIsEmpty}/>
         </form>
