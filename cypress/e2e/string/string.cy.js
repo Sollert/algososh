@@ -1,5 +1,6 @@
 import {CHANGING, DEFAULT, MODIFIED} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
+import {circlesClass} from "../../../src/constants/tests";
 
 describe('Тестирование страницы "Строка"', () => {
   beforeEach(() => {
@@ -25,7 +26,7 @@ describe('Тестирование страницы "Строка"', () => {
     const testStringLength = testString.length
     cy.get('@input').type(testString);
     cy.get('@submit-button').click();
-    cy.get("[class*='circle_circle']").as('circles');
+    cy.get(circlesClass).as('circles');
 
     cy.get('@circles').should((circle) => {
       expect(circle).to.have.length(testStringLength);

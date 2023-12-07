@@ -1,5 +1,6 @@
 import {CHANGING, DEFAULT} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
+import {circlesClass} from "../../../src/constants/tests";
 
 describe('Тестирование страницы "Связный список"', () => {
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('Тестирование страницы "Связный список
     cy.get('input[data-cy="index-input"]').as('index-input');
 
     cy.get('div[class^="circle_content').as('circle-contents');
-    cy.get("[class*='circle_circle']").as('circles');
+    cy.get(circlesClass).as('circles');
   })
 
   it('Кнопка добавить в head недоступна при пустом значении', () => {

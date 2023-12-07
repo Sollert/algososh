@@ -1,5 +1,6 @@
 import {CHANGING, DEFAULT} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
+import {circlesClass} from "../../../src/constants/tests";
 
 describe('Тестирование страницы "Очередь"', () => {
   beforeEach(() => {
@@ -20,7 +21,7 @@ describe('Тестирование страницы "Очередь"', () => {
   it('Добавление элемента в очередь происходит корректно', () => {
     const testValue = '1';
     const secondTestValue = '2';
-    cy.get("[class*='circle_circle']").as('circles')
+    cy.get(circlesClass).as('circles')
 
     cy.get('@value-input').type(testValue);
     cy.get('@submit-button').click();
@@ -63,7 +64,7 @@ describe('Тестирование страницы "Очередь"', () => {
   it('Удаление элемента из очереди происходит корректно', () => {
     const testValue = '1';
     const secondTestValue = '2';
-    cy.get("[class*='circle_circle']").as('circles')
+    cy.get(circlesClass).as('circles')
 
     cy.get('@value-input').type(testValue);
     cy.get('@submit-button').click();
@@ -96,7 +97,7 @@ describe('Тестирование страницы "Очередь"', () => {
   it('Ресет удаляет элементы из очереди корректно', () => {
     const testValue = '1';
     const secondTestValue = '2';
-    cy.get("[class*='circle_circle']").as('circles')
+    cy.get(circlesClass).as('circles')
 
     cy.get('@value-input').type(testValue);
     cy.get('@submit-button').click();

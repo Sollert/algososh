@@ -1,5 +1,6 @@
 import {CHANGING, DEFAULT} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
+import {circlesClass} from "../../../src/constants/tests";
 
 describe('Тестирование страницы "Стек"', () => {
   beforeEach(() => {
@@ -31,7 +32,7 @@ describe('Тестирование страницы "Стек"', () => {
     const testValue = '1';
     cy.get('@input').type(testValue);
     cy.get('@submit-button').click();
-    cy.get("[class*='circle_circle']").as('circles')
+    cy.get(circlesClass).as('circles')
 
     cy.get('@circles').should((circles) => {
       expect(circles).to.have.length(1);
@@ -98,7 +99,7 @@ describe('Тестирование страницы "Стек"', () => {
     cy.get('@input').type(secondTestValue);
     cy.get('@submit-button').click();
 
-    cy.get("[class*='circle_circle']").as('circles');
+    cy.get(circlesClass).as('circles');
 
     cy.get('@delete-button').click();
 
@@ -126,7 +127,7 @@ describe('Тестирование страницы "Стек"', () => {
 
     cy.get('@input').type(testValue);
     cy.get('@submit-button').click();
-    cy.get("[class*='circle_circle']").as('circles');
+    cy.get(circlesClass).as('circles');
 
     cy.wait(SHORT_DELAY_IN_MS);
 

@@ -37,8 +37,6 @@ export const getSortSteps = (
     bubbleSort(arr, steps, isAscending)
   }
 
-  console.log(steps)
-
   return steps
 }
 
