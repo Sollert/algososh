@@ -1,4 +1,4 @@
-import {CHANGING, STANDARD, MODIFIED} from "../../../src/constants/styles";
+import {CHANGING, DEFAULT, MODIFIED} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 describe('Тестирование страницы "Строка"', () => {
@@ -34,10 +34,10 @@ describe('Тестирование страницы "Строка"', () => {
         .to.have.css('border', CHANGING);
       expect(circle.eq(1))
         .to.contain(testString[1])
-        .to.have.css('border', STANDARD);
+        .to.have.css('border', DEFAULT);
       expect(circle.eq(2))
         .to.contain(testString[2])
-        .to.have.css('border', STANDARD);
+        .to.have.css('border', DEFAULT);
       expect(circle.eq(3))
         .to.contain(testString[3])
         .to.have.css('border', CHANGING);

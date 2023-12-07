@@ -1,4 +1,4 @@
-import {CHANGING, STANDARD} from "../../../src/constants/styles";
+import {CHANGING, DEFAULT} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 describe('Тестирование страницы "Стек"', () => {
@@ -48,7 +48,7 @@ describe('Тестирование страницы "Стек"', () => {
       expect(circles).to.have.length(1);
       expect(circles.eq(0))
         .to.contain(testValue)
-        .to.have.css('border', STANDARD)
+        .to.have.css('border', DEFAULT)
       expect(circles.eq(0).prev('div')).to.contain('top');
       expect(circles.eq(0).next('p')).to.contain(0);
     })
@@ -69,7 +69,7 @@ describe('Тестирование страницы "Стек"', () => {
     cy.get('@circles').should((circles) => {
       expect(circles.eq(0))
         .to.contain(testValue)
-        .to.have.css('border', STANDARD)
+        .to.have.css('border', DEFAULT)
       expect(circles.eq(0).prev('div')).not.to.contain('top');
       expect(circles.eq(0).next('p')).to.contain(0);
     });
@@ -80,7 +80,7 @@ describe('Тестирование страницы "Стек"', () => {
       expect(circles).to.have.length(2);
       expect(circles.eq(1))
         .to.contain(secondTestValue)
-        .to.have.css('border', STANDARD)
+        .to.have.css('border', DEFAULT)
       expect(circles.eq(1).prev('div')).to.contain('top');
       expect(circles.eq(1).next('p')).to.contain(1);
     });

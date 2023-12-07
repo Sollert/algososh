@@ -1,4 +1,4 @@
-import {CHANGING, STANDARD} from "../../../src/constants/styles";
+import {CHANGING, DEFAULT} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 describe('Тестирование страницы "Связный список"', () => {
@@ -55,7 +55,7 @@ describe('Тестирование страницы "Связный список
   it('Дефолтный список отрисовывается корректно', () => {
     cy.get('@circles').should((circles) => {
       for (let i = 0; i < circles.length; i++) {
-        expect(circles.eq(i)).to.contain('').to.have.css('border', STANDARD);
+        expect(circles.eq(i)).to.contain('').to.have.css('border', DEFAULT);
         expect(circles.eq(i).next('p')).to.contain(i);
 
         if (i === 0) expect(circles.eq(i).prev('div')).to.contain('head');

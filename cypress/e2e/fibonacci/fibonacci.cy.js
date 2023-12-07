@@ -1,4 +1,4 @@
-import {CHANGING, MODIFIED, STANDARD} from "../../../src/constants/styles";
+import {CHANGING, MODIFIED, DEFAULT} from "../../../src/constants/styles";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 describe('Тестирование страницы "Последовательность Фибоначчи"', () => {
