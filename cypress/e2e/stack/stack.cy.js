@@ -123,7 +123,6 @@ describe('Тестирование страницы "Стек"', () => {
 
   it('Ресет работает корректно', () => {
     const testValue = '1';
-    const secondTestValue = '2';
 
     cy.get('@input').type(testValue);
     cy.get('@submit-button').click();
