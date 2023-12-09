@@ -146,7 +146,6 @@ export const ListPage = () => {
     list.deleteHead();
     listElements.shift();
     listElements[0]!.isHead = true;
-    await delay()
     setListElements([...listElements])
 
     setInProgress(false);
@@ -173,7 +172,6 @@ export const ListPage = () => {
     listElements[list.getSize() - 1]!.isTail = true;
     listElements[list.getSize() - 1]!.isLinked = false;
 
-    await delay()
     setListElements([...listElements])
     setInProgress(false);
     setIsDeletingTail(false);
@@ -233,7 +231,6 @@ export const ListPage = () => {
       if (i === inputIndex) {
         const value = listElements[i]!.value;
         listElements[i]!.value = '';
-        await delay()
         setListElements([...listElements])
         listElements[i]!.newValue = value;
       }
@@ -274,6 +271,7 @@ export const ListPage = () => {
             maxLength={LIST_INPUT_MAX_LENGTH}
             disabled={inProgress}
             extraClass={styles['input']}
+            data-cy={"value-input"}
           />
           <Input
             type='number'
@@ -282,6 +280,7 @@ export const ListPage = () => {
             onChange={indexChangeHandler}
             disabled={inProgress}
             extraClass={styles['input']}
+            data-cy={"index-input"}
           />
         </div>
         <div className={styles['buttons-container']}>
@@ -299,6 +298,7 @@ export const ListPage = () => {
               || isDeletingTail
               || isAddingAtIndex}
             extraClass={styles['button']}
+            data-cy={"add-head-button"}
           />
           <Button
             text='Добавить в tail'
@@ -314,6 +314,7 @@ export const ListPage = () => {
               || isDeletingTail
               || isAddingAtIndex}
             extraClass={styles['button']}
+            data-cy={"add-tail-button"}
           />
           <Button
             text='Добавить по индексу'
@@ -332,6 +333,7 @@ export const ListPage = () => {
               || isDeletingTail
               || isDeletingHead
             }
+            data-cy={"add-index-button"}
           />
         </div>
         <div className={styles['buttons-container']}>
@@ -349,6 +351,7 @@ export const ListPage = () => {
               || isDeletingTail
               || isAddingAtIndex}
             extraClass={styles['button']}
+            data-cy={"delete-head-button"}
           />
           <Button
             text='Удалить из tail'
@@ -365,6 +368,7 @@ export const ListPage = () => {
               || isDeletingAtIndex
               || isAddingAtIndex}
             extraClass={styles['button']}
+            data-cy={"delete-tail-button"}
           />
           <Button
             text='Удалить по индексу'
@@ -383,6 +387,7 @@ export const ListPage = () => {
               || isDeletingTail
               || isAddingAtIndex
             }
+            data-cy={"delete-index-button"}
           />
         </div>
       </form>
@@ -405,6 +410,7 @@ export const ListPage = () => {
               tail={element?.isTail ? TAIL : ''}
               index={index}
               extraClass={'mr-6 ml-6'}
+              data-cy={"main-circle"}
             />
             {(isDeletingHead || isDeletingTail || isDeletingAtIndex) &&
               element?.changingPosition && (

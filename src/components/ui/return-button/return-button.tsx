@@ -15,6 +15,7 @@ export const ReturnButton: React.FC<ButtonProps> = ({
     <button
       className={`${styles.button} ${extraClass}`}
       type="button"
+      data-cy="return-button"
       {...rest}
     >
       <ReturnIcon />

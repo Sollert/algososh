@@ -1,0 +1,1 @@
+export const circlesClass = "[class*='circle_circle']"

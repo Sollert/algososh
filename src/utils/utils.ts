@@ -25,6 +25,7 @@ export const getSortSteps = (
   isAscending: boolean,
   sortAlgorithm: string | null
 ) => {
+
   const arr = arrToSort;
   const steps: (DataElement | null)[][] = [];
 

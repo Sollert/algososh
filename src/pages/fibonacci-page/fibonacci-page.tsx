@@ -53,13 +53,14 @@ export const FibonacciPage = () => {
     <SolutionLayout title="Последовательность Фибоначчи">
       <section>
         <form className={styles['form-container']} onSubmit={onSubmitHandler}>
-          <Input type="number" min={1} max={FIBONACCI_MAX_INDEX} value={inputValue} onChange={inputChangeHandler}/>
+          <Input type="number" min={1} max={FIBONACCI_MAX_INDEX} value={inputValue}
+                 onChange={inputChangeHandler} data-cy="input-value"/>
           <Button text={'Рассчитать'} type={"submit"} isLoader={isLoading}
                   disabled={isLoading || inputValueIsEmpty}/>
         </form>
         {isResultMounted && <div className={styles['list-container']}>
           {resultArray.map((item, index) => {
-            return <Circle letter={item.toString()} key={index} index={index} />
+            return <Circle letter={item.toString()} key={index} index={index}/>
           })}
         </div>}
       </section>

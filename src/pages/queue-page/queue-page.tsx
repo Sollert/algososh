@@ -35,7 +35,8 @@ export const QueuePage = () => {
     }
   }
 
-  const handleAddClick = async () => {
+  const handleAddClick = async (evt: FormEvent) => {
+    evt.preventDefault();
     setInProgress(true);
     setIsAdding(true);
 
@@ -110,6 +111,7 @@ export const QueuePage = () => {
           isLimitText={true}
           onChange={inputChangeHandler}
           disabled={inProgress}
+          data-cy={"value-input"}
         />
         <Button
           text='Добавить'
@@ -117,6 +119,7 @@ export const QueuePage = () => {
           disabled={isDeleting || !inputValue || queue.getTailElement()?.index === QUEUE_MAX_LENGTH - 1}
           isLoader={isAdding}
           onClick={handleAddClick}
+          data-cy={"submit-button"}
         />
         <Button
           text='Удалить'
@@ -124,6 +127,7 @@ export const QueuePage = () => {
           disabled={isAdding || queue.getSize() === 0}
           isLoader={isDeleting}
           onClick={handleRemoveClick}
+          data-cy={"delete-button"}
         />
         <Button
           text='Очистить'
@@ -131,9 +135,10 @@ export const QueuePage = () => {
           disabled={isAdding || isDeleting || queue.getSize() === 0}
           isLoader={inProgress && !isAdding && !isDeleting}
           onClick={handleResetClick}
+          data-cy={"reset-button"}
         />
       </form>
-      <div className={styles['queue-container']}>
+      <div className={styles['queue-container']} data-cy={"list"}>
         {array.map((element: DataElement | null, index: number) => (
           <Circle
             key={index}
